@@ -82,11 +82,21 @@
   align-items: center;
 }
 
+.file-uploader {
+  height: 70vh;
+  width: 45vw;
+  margin: 5px;
+  align-items: center;
+}
+
 .title {
   height: 100px;
   font-size: 30px;
-  margin: 0 50px;
-  display: flex;
+  margin: 30px 50px;
+  align-items: center;
+}
+
+.file-chooser {
   align-items: center;
 }
 
@@ -98,4 +108,35 @@
 
 .preview-container {
   margin: 10px;
+}
+
+.drop-area {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border: 3px dashed #ccc;
+  padding: 1rem;
+  transition: border-color 0.1s;
+}
+
+.drop-area.drag-over {
+  border-color: #aaa;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.button {
+  margin: 10px;
+  padding: 2px 10px;
 }

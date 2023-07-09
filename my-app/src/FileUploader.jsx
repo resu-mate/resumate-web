@@ -1,21 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 export const FileUploader = () => {
+  const fileInputRef = useRef(null);
+  const [dragOver, setDragOver] = useState(false);
   const [file, setFile] = useState('');
   const [fileName, setFileName] = useState('');
   const [submitted, setSubmitted] = useState(false);
+
+  const onDragOver = (e) => {
+    e.preventDefault();
+    setDragOver(true);
+  };
+  
+  const onDragLeave = () => {
+    setDragOver(false);
+  };
+  
+  const onDrop = (e) => {
+    e.preventDefault();
+    setDragOver(false);
+  
+    const fileRef = e.dataTransfer.files[0];
+    handleFile(fileRef);
+    fileInputRef.current.files = e.dataTransfer.files;
+  };
+
+  const handleFile = (fileRef) => {
+    setSubmitted(false);
+    const fileName = fileRef.name;
+    setFileName(fileName);
+    const reader = new FileReader();
+    reader.readAsDataURL(fileRef);
+    reader.onload = (ev) => {
+      setFile(ev.target.result);
+    };
+  };
 
   const onChange = (e) => {
     setSubmitted(false);
     if ((e.target.files).length > 0) {
       const fileRef = e.target.files[0];
-      const fileName = fileRef.name;
-      setFileName(fileName);
-      const reader = new FileReader();
-      reader.readAsDataURL(fileRef);
-      reader.onload = (ev) => {
-        setFile(ev.target.result);
-      }; 
+      handleFile(fileRef);
     } else {
       setFile('');
       setFileName('');
@@ -28,15 +53,31 @@ export const FileUploader = () => {
     console.log({ file }); // show in console until handled
   };
 
+  const handleReset = (e) => {
+    e.preventDefault();
+    setDragOver(false);
+    fileInputRef.current.value = '';
+    setFile('');
+    setFileName('');
+    setSubmitted(false);
+    // TODO: should also stop parsing 
+  };
+
+
   return (
-    <form onSubmit={onSubmit}>
-        <div className="title">
-          Choose a file to upload
+    <form className="file-uploader" onSubmit={onSubmit} onDragOver={onDragOver} onDragLeave={onDragLeave} onDrop={onDrop}>
+        <div className={`drop-area${dragOver ? ' drag-over' : ''}`}>
+          {dragOver && (
+          <div className="overlay">
+          </div>)}
+          <div className="title">
+            Upload your resume here!
+          </div>
+          <div className="file-chooser">
+            <input ref={fileInputRef} type="file" accept=".pdf, .doc, .docx" onChange={onChange}/>
+          </div>
         </div>
-        <div>
-            <input type="file" accept=".pdf, .doc, .docx" onChange={onChange} />
-        </div>
-        <div>
+        {/* <div>
             {submitted && file && file.indexOf('application/pdf') > -1 && 
             <div className="preview-container">
               <embed src={file} height="400px" type="application/pdf"/>
@@ -51,10 +92,13 @@ export const FileUploader = () => {
             <div className="preview-container">
               <p>TODO: This is a .docx file preview</p>
             </div>)}
-        </div>
+        </div> */}
         <div>
-            <button type="submit">
-                Submit
+          <button className="button" onClick={handleReset}>
+              Reset
+          </button>
+          <button className="button" type="submit">
+              Submit
             </button>
         </div>
         <div>

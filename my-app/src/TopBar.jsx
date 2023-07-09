@@ -12,7 +12,7 @@ function TopBar() {
         ResuMate
       </div>
       <div className="top-right login-button">
-        <button onClick={handleClick}>
+        <button className="button" onClick={handleClick}>
           Log In
         </button>
       </div>
