@@ -1,10 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import { FileUploader } from './FileUploader';
 import TopBar from './TopBar';
+import { FileUploader } from './FileUploader';
+import { ParsedResults } from './ParsedResults';
 
 function App() {
+  const [showParsedResults, setShowParsedResults] = useState(false);
+
+  const handleChange = (value: boolean) => {
+    setShowParsedResults(value);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -12,7 +18,10 @@ function App() {
           <TopBar />
         </div>
         <div className="middle-left">
-          <FileUploader />
+          <FileUploader onShowParsedResultsChange={handleChange} />
+        </div>
+        <div className="middle-right">
+          <ParsedResults showComponent={showParsedResults}/>
         </div>
       </header>
     </div>

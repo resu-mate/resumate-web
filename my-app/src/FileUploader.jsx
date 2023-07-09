@@ -1,11 +1,21 @@
 import React, { useState, useRef } from 'react';
 
-export const FileUploader = () => {
+const LoadingAnimation = () => {
+  return (
+    <div className="loading-animation">
+      <div className="spinner"></div>
+      <div className="loading-text"></div>
+    </div>
+  );
+};
+
+export const FileUploader = ({ onShowParsedResultsChange }) => {
   const fileInputRef = useRef(null);
   const [dragOver, setDragOver] = useState(false);
   const [file, setFile] = useState('');
   const [fileName, setFileName] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onDragOver = (e) => {
     e.preventDefault();
@@ -48,9 +58,14 @@ export const FileUploader = () => {
   };
 
   const onSubmit = (e) => {
+    console.log({ file }); // show in console until handled
     e.preventDefault();
     setSubmitted(true);
-    console.log({ file }); // show in console until handled
+    setLoading(true); 
+    setTimeout(() => {
+      setLoading(false); 
+      onShowParsedResultsChange(true);
+    }, 1000); // update to keep 'loading' until something is returned from parsing service
   };
 
   const handleReset = (e) => {
@@ -60,6 +75,7 @@ export const FileUploader = () => {
     setFile('');
     setFileName('');
     setSubmitted(false);
+    setLoading(false);
     // TODO: should also stop parsing 
   };
 
@@ -105,6 +121,10 @@ export const FileUploader = () => {
             {submitted && file && 
             <div className="body-text">
               You submitted {fileName}!
+            </div>}
+            {loading &&
+            <div className="body-text">
+              <LoadingAnimation />
             </div>}
         </div>
     </form>
