@@ -18,7 +18,7 @@ function App() {
           <TopBar />
         </div>
         <div className="middle-left">
-          <FileUploader onShowParsedResultsChange={handleChange} />
+          <FileUploader setShowParsedResults={handleChange} />
         </div>
         <div className="middle-right">
           <ParsedResults showComponent={showParsedResults}/>

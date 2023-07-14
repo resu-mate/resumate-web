@@ -1,15 +1,8 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
+import { LoadingAnimation } from './LoadingAnimation';
 
-const LoadingAnimation = () => {
-  return (
-    <div className="loading-animation">
-      <div className="spinner"></div>
-      <div className="loading-text"></div>
-    </div>
-  );
-};
 
-export const FileUploader = ({ onShowParsedResultsChange }) => {
+export const FileUploader = ({ setShowParsedResults }) => {
   const fileInputRef = useRef(null);
   const [dragOver, setDragOver] = useState(false);
   const [file, setFile] = useState('');
@@ -64,7 +57,7 @@ export const FileUploader = ({ onShowParsedResultsChange }) => {
     setLoading(true); 
     setTimeout(() => {
       setLoading(false); 
-      onShowParsedResultsChange(true);
+      setShowParsedResults(true);
     }, 1000); // update to keep 'loading' until something is returned from parsing service
   };
 
