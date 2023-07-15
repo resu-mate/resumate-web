@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from './logo.svg';
 
 function TopBar() {
   const handleClick = () => {
@@ -9,7 +10,7 @@ function TopBar() {
   return (
     <div>
       <div className="top-left website-name">
-        ResuMate
+        <img src={logo}/>
       </div>
       <div className="top-right login-button">
         <button className="button" onClick={handleClick}>
