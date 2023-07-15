@@ -45,26 +45,27 @@
   background-color: #288a99;
   position: absolute;
   top: 0;
-  height: 100px;
+  height: 12vh;
   width: 100%;
   display: flex;
   align-items: center;
 }
 
-.website-name {
-  height: 100px;
-  font-size: 30px;
-  font-weight: bold;
-  margin: 0 20px;
+.website-logo {
+  height: 10vh;
+  width: 40vw;
+  margin: 0 5vw;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .login-button {
-  height: 100px;
+  height: 10vh;
   font-size: 10px;
-  margin: 0 100px;
+  margin: 0 5vw;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
 }
 

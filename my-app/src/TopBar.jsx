@@ -9,8 +9,8 @@ function TopBar() {
 
   return (
     <div>
-      <div className="top-left website-name">
-        <img src={logo}/>
+      <div className="top-left">
+        <img src={logo} className="website-logo"/>
       </div>
       <div className="top-right login-button">
         <button className="button" onClick={handleClick}>
