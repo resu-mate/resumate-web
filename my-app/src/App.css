@@ -69,115 +69,35 @@
   align-items: center;
 }
 
-@media (min-width: 200px) and (max-width: 400px) {
+@media (aspect-ratio: 16/9) {
   .top-bar {
     height: 10vh;
   }
 
   .website-logo {
     height: 10vh;
-    width: 60vw;
-    margin: 0 5vw;
-  }
-
-  .login-button {
-    height: 10vh;
-  }
-}
-
-@media (min-width: 401px) and (max-width: 600px) {
-  .top-bar {
-    height: 12vh;
-  }
-
-  .website-logo {
-    height: 12vh;
-    width: 50vw;
-    margin: 0 5vw;
-  }
-
-  .login-button {
-    height: 12vh;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 800px) {
-  .top-bar {
-    height: 13vh;
-  }
-
-  .website-logo {
-    height: 13vh;
-    width: 50vw;
-    margin: 0 3vw;
-  }
-
-  .login-button {
-    height: 13vh;
-  }
-}
-
-@media (min-width: 801px) and (max-width: 1000px) {
-  .top-bar {
-    height: 15vh;
-  }
-
-  .website-logo {
-    height: 15vh;
-    width: 50vw;
+    width: 20vw;
     margin: 0 2vw;
   }
 
   .login-button {
-    height: 15vh;
+    height: 10vh;
   }
 }
 
-@media (min-width: 1001px) and (max-width: 1200px) {
+@media (aspect-ratio: 4/3) {
   .top-bar {
-    height: 17vh;
+    height: 10vh;
   }
 
   .website-logo {
-    height: 17vh;
-    width: 55vw;
-    margin: 0 1vw;
+    height: 10vh;
+    width: 30vw;
+    margin: 0 2vw;
   }
 
   .login-button {
-    height: 17vh;
-  }
-}
-
-@media (min-width: 1201px) and (max-width: 1400px) {
-  .top-bar {
-    height: 19vh;
-  }
-
-  .website-logo {
-    height: 19vh;
-    width: 50vw;
-    margin: 0 1vw;
-  }
-
-  .login-button {
-    height: 19vh;
-  }
-}
-
-@media (min-width: 1401px) {
-  .top-bar {
-    height: 22vh;
-  }
-
-  .website-logo {
-    height: 22vh;
-    width: 50vw;
-    margin: 0 1vw;
-  }
-
-  .login-button {
-    height: 22vh;
+    height: 10vh;
   }
 }
 
