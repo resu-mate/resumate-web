@@ -10,6 +10,10 @@
   color: white;
 }
 
+.hidden {
+  display: none;
+}
+
 .top {
   position: absolute;
   top: 0;
@@ -42,11 +46,21 @@
 .middle-left {
   position: absolute;
   left: 0;
+  top: 10%;
+  height: 80%;
+  width: 50%;
+  display: flex;
+  align-items: center;
 }
 
 .middle-right {
   position: absolute;
   right: 0;
+  top: 10%;
+  height: 80%;
+  width: 50%;
+  display: flex;
+  align-items: center;
 }
 
 .top-bar {
@@ -76,9 +90,8 @@
 } */
 
 .file-uploader {
-  height: 65vh;
-  width: 45vw;
-  margin: 20px;
+  height: 100%;
+  width: 100%;
   align-items: center;
 }
 
@@ -104,12 +117,13 @@
 }
 
 .drop-area {
-  background-color: #5f949a;
-  height: 100%;
-  width: 100%;
   position: relative;
+  background-color: #5f949a;
+  height: 80%;
+  width: 80%;
   border: 3px dashed #ccc;
   padding: 1rem;
+  margin: 5%;
   transition: border-color 0.1s;
 }
 
@@ -196,17 +210,18 @@
   }
 }
 
-.parsed-results {
-  background-color: #5f949a;
-  height: 65vh;
-  width: 45vw;
-  margin: 20px;
+.bounding-box {
+  height: 100%;
+  width: 100%;
   align-items: center;
 }
 
-.bounding-box {
-  background-color: #5f949a;
-  height: 100%;
+.parsed-results {
   position: relative;
+  background-color: #5f949a;
+  height: 80%;
+  width: 80%;
+  border: 3px solid #ccc;
   padding: 1rem;
+  margin: 5%;
 }
