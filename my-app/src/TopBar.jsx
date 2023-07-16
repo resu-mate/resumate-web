@@ -8,16 +8,16 @@ function TopBar() {
   };
 
   return (
-    <div>
-      <div className="top-left">
-        <img src={logo} className="website-logo"/>
+      <div className="top-bar">
+        <div className="top-left">
+          <img className="website-logo" src={logo}/>
+        </div>
+        <div className="top-right">
+          <button className="login-button" onClick={handleClick}>
+            Log In
+          </button>
+        </div>
       </div>
-      <div className="top-right login-button">
-        <button className="button" onClick={handleClick}>
-          Log In
-        </button>
-      </div>
-    </div>
   );
 }
 

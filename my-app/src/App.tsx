@@ -12,9 +12,8 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div className="top-bar">
+    <div className="app">
+        <div className="top">
           <TopBar />
         </div>
         <div className="middle-left">
@@ -23,7 +22,6 @@ function App() {
         <div className="middle-right">
           <ParsedResults showComponent={showParsedResults}/>
         </div>
-      </header>
     </div>
   );
 }
