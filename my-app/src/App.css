@@ -1,6 +1,6 @@
 body {
   height: 100%;
-  background-color: #256694;
+  background-color: #73bff6;
 }
 
 .app {
@@ -102,23 +102,6 @@ body {
   }
 }
 
-.file-uploader {
-  height: 100%;
-  width: 100%;
-  align-items: center;
-}
-
-.title {
-  height: 100px;
-  font-size: 30px;
-  margin: 30px 50px;
-  align-items: center;
-}
-
-.file-chooser {
-  align-items: center;
-}
-
 .body-text {
   height: 50px;
   font-size: 15px;
@@ -132,7 +115,7 @@ body {
 .drop-area {
   position: relative;
   background-color: #5689ad;
-  height: 80%;
+  height: 90%;
   width: 80%;
   border: 3px dashed #ccc;
   padding: 1rem;
@@ -155,11 +138,6 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 1;
-}
-
-.button {
-  margin: 10px;
-  padding: 2px 10px;
 }
 
 .loading-background {
@@ -204,22 +182,23 @@ body {
 }
 
 .loading-text::after {
-  content: 'Parsing';
+  content: "Parsing";
   animation: textAnimation 1.5s infinite;
 }
 
 @keyframes textAnimation {
-  0%, 100% {
-    content: 'Parsing';
+  0%,
+  100% {
+    content: "Parsing";
   }
   25% {
-    content: 'Parsing .';
+    content: "Parsing .";
   }
   50% {
-    content: 'Parsing ..';
+    content: "Parsing ..";
   }
   75% {
-    content: 'Parsing ...';
+    content: "Parsing ...";
   }
 }
 
@@ -232,7 +211,7 @@ body {
 .parsed-results {
   position: relative;
   background-color: #5689ad;
-  height: 80%;
+  height: 90%;
   width: 80%;
   border: 3px solid #ccc;
   padding: 1rem;
