@@ -1,13 +1,13 @@
 import React from 'react';
 
-export const ParsedResults = ({ showComponent }) => {
+export const ParsedResults = ({ showComponent, parsedResults }) => {
   return (
     <div className={`${showComponent ? 'bounding-box' : 'hidden'}`}>
         <div className="parsed-results">
             <div className="title">
                 Here are your parsed results!
             </div>
-            <div>
+            {/* <div>
                 a bunch of skills. Lorem ipsum dolor sit amet.
             </div>
             <div>
@@ -21,6 +21,9 @@ export const ParsedResults = ({ showComponent }) => {
             </div>
             <div>
                 achievements. Lorem ipsum dolor sit amet.
+            </div> */}
+            <div className="parsed-text">
+                {parsedResults}
             </div>
         </div>
     </div>

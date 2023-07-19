@@ -238,3 +238,7 @@ body {
   padding: 1rem;
   margin: 5%;
 }
+
+.parsed-text {
+  font-size: 15px;
+}
