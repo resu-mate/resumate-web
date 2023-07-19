@@ -33,10 +33,14 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
     const fileName = fileRef.name;
     setFileName(fileName);
     const reader = new FileReader();
-    reader.readAsDataURL(fileRef);
-    reader.onload = (ev) => {
-      setFile(ev.target.result);
-    };
+    // reader.readAsDataURL(fileRef);
+    // reader.onload = (ev) => {
+    //   setFile(ev.target.result);
+    // };
+    reader.readAsBinaryString(fileRef)
+    reader.onload=(ev) => {
+      setFile(`${btoa(ev.target.result)}`)
+    }
   };
 
   const onChange = (e) => {
@@ -64,15 +68,15 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
         return;
       }
 
-      if (file.indexOf('application/pdf') <= -1) {
-        console.error('not a pdf');
-        setLoading(false); 
-        setShowParsedResults(true);
-        return;
-      }
+      // if (file.indexOf('application/pdf') <= -1) {
+      //   console.error('not a pdf');
+      //   setLoading(false); 
+      //   setShowParsedResults(true);
+      //   return;
+      // }
 
-      const formData = new FormData();
-      formData.append('file', file);
+      // const formData = new FormData();
+      // formData.append('file', file);
 
       const response = await fetch('https://3trpak7uyg.execute-api.us-east-1.amazonaws.com/dev/upload-file', {
         method: 'POST',
@@ -89,12 +93,11 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
       }
 
       const data = await response.text();
-      setParsedResults(data);
+      const parsedData = JSON.parse(data);
+      setParsedResults(parsedData);
 
-      setTimeout(() => {
-        setLoading(false); 
-        setShowParsedResults(true);
-      }, 1000); // update to keep 'loading' until something is returned from api
+      setLoading(false); 
+      setShowParsedResults(true);
     } catch (error) {
       console.error('error:', error);
     }

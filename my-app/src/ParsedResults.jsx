@@ -23,7 +23,7 @@ export const ParsedResults = ({ showComponent, parsedResults }) => {
                 achievements. Lorem ipsum dolor sit amet.
             </div> */}
             <div className="parsed-text">
-                {parsedResults}
+                {parsedResults.extracted_text}
             </div>
         </div>
     </div>
