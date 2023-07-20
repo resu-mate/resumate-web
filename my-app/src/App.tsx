@@ -6,9 +6,14 @@ import { ParsedResults } from './ParsedResults';
 
 function App() {
   const [showParsedResults, setShowParsedResults] = useState(false);
+  const [parsedResults, setParsedResults] = useState('');
 
-  const handleChange = (value: boolean) => {
+  const setShow = (value: boolean) => {
     setShowParsedResults(value);
+  };
+
+  const setResults = (value: any) => {
+    setParsedResults(value);
   };
 
   return (
@@ -17,10 +22,10 @@ function App() {
           <TopBar />
         </div>
         <div className="middle-left">
-          <FileUploader setShowParsedResults={handleChange} />
+          <FileUploader setShowParsedResults={setShow} setParsedResults={setResults} />
         </div>
         <div className="middle-right">
-          <ParsedResults showComponent={showParsedResults}/>
+          <ParsedResults showComponent={showParsedResults} parsedResults={parsedResults}/>
         </div>
     </div>
   );

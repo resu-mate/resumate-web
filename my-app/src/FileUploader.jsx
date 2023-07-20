@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { LoadingAnimation } from './LoadingAnimation';
 
 
-export const FileUploader = ({ setShowParsedResults }) => {
+export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
   const fileInputRef = useRef(null);
   const [dragOver, setDragOver] = useState(false);
   const [file, setFile] = useState('');
@@ -33,10 +33,14 @@ export const FileUploader = ({ setShowParsedResults }) => {
     const fileName = fileRef.name;
     setFileName(fileName);
     const reader = new FileReader();
-    reader.readAsDataURL(fileRef);
-    reader.onload = (ev) => {
-      setFile(ev.target.result);
-    };
+    // reader.readAsDataURL(fileRef);
+    // reader.onload = (ev) => {
+    //   setFile(ev.target.result);
+    // };
+    reader.readAsBinaryString(fileRef)
+    reader.onload=(ev) => {
+      setFile(`${btoa(ev.target.result)}`)
+    }
   };
 
   const onChange = (e) => {
@@ -50,15 +54,53 @@ export const FileUploader = ({ setShowParsedResults }) => {
     }
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     console.log({ file }); // show in console until handled
     e.preventDefault();
     setSubmitted(true);
     setLoading(true); 
-    setTimeout(() => {
+
+    try {
+      if (!file) {
+        console.error('no file submitted');
+        setLoading(false); 
+        setShowParsedResults(true);
+        return;
+      }
+
+      // if (file.indexOf('application/pdf') <= -1) {
+      //   console.error('not a pdf');
+      //   setLoading(false); 
+      //   setShowParsedResults(true);
+      //   return;
+      // }
+
+      // const formData = new FormData();
+      // formData.append('file', file);
+
+      const response = await fetch('https://3trpak7uyg.execute-api.us-east-1.amazonaws.com/dev/upload-file', {
+        method: 'POST',
+        body: file,
+        headers: {
+          'Content-Type': 'application/pdf',
+        },
+      });
+
+      if (!response.ok) {
+        setLoading(false); 
+        setShowParsedResults(true);
+        throw new Error('error');
+      }
+
+      const data = await response.text();
+      const parsedData = JSON.parse(data);
+      setParsedResults(parsedData);
+
       setLoading(false); 
       setShowParsedResults(true);
-    }, 1000); // update to keep 'loading' until something is returned from parsing service
+    } catch (error) {
+      console.error('error:', error);
+    }
   };
 
   const handleReset = (e) => {

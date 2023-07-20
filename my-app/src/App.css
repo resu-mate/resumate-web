@@ -1,5 +1,9 @@
-.app {
+body {
+  height: 100%;
   background-color: #256694;
+}
+
+.app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -83,11 +87,20 @@
   margin: 0 5%;
 }
 
-/* @media (max-width: 530px) {
+@media (max-width: 800px) {
   .website-logo {
     width: 100%;
   }
-} */
+
+  .middle-left {
+    width: 100%;
+  }
+
+  .middle-right {
+    width: 100%;
+    top: 100vh;
+  }
+}
 
 .file-uploader {
   height: 100%;
@@ -118,7 +131,7 @@
 
 .drop-area {
   position: relative;
-  background-color: #5f949a;
+  background-color: #5689ad;
   height: 80%;
   width: 80%;
   border: 3px dashed #ccc;
@@ -218,10 +231,14 @@
 
 .parsed-results {
   position: relative;
-  background-color: #5f949a;
+  background-color: #5689ad;
   height: 80%;
   width: 80%;
   border: 3px solid #ccc;
   padding: 1rem;
   margin: 5%;
+}
+
+.parsed-text {
+  font-size: 6.5px;
 }
