@@ -116,7 +116,7 @@ body {
 
 .file-chooser {
   align-items: center;
-  margin: 33% 30%;
+  margin: 5% 30%;
 }
 
 .body-text {
@@ -126,7 +126,8 @@ body {
 }
 
 .preview-container {
-  margin: 10px;
+  margin: 5%;
+  height: 70%;
 }
 
 .drop-area {
@@ -242,7 +243,7 @@ body {
 
 .parsed-text-container {
   overflow-y: auto; 
-  max-height: 75%; 
+  max-height: 80%; 
   margin: 1%;
   display: flex;
 }
