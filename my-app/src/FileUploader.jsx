@@ -77,7 +77,7 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
         return;
       }
 
-      if (fileType != "application/pdf") {
+      if (fileType !== "application/pdf") {
         console.error('not a pdf');
         setLoading(false); 
         setShowParsedResults(true);
@@ -135,7 +135,7 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
             <input ref={fileInputRef} type="file" accept=".pdf, .doc, .docx" onChange={onChange}/>
           </div>
 
-            {fileBinary && fileType == 'application/pdf' && 
+            {fileBinary && fileType === 'application/pdf' && 
             <div className="preview-container">
               <embed src={`${fileData}#toolbar=0&navpanes=0`} height="100%" type="application/pdf"/>
               {/* <iframe src={`${fileData}#toolbar=0`} height="100%" width="100%" title="Embedded PDF" /> */}

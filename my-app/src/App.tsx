@@ -24,9 +24,10 @@ function App() {
         <div className="middle-left">
           <FileUploader setShowParsedResults={setShow} setParsedResults={setResults} />
         </div>
+        {showParsedResults && 
         <div className="middle-right">
           <ParsedResults showComponent={showParsedResults} parsedResults={parsedResults}/>
-        </div>
+        </div>}
     </div>
   );
 }
