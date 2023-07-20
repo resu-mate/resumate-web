@@ -75,9 +75,6 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
       //   return;
       // }
 
-      // const formData = new FormData();
-      // formData.append('file', file);
-
       const response = await fetch('https://3trpak7uyg.execute-api.us-east-1.amazonaws.com/dev/upload-file', {
         method: 'POST',
         body: file,
@@ -111,7 +108,7 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
     setFileName('');
     setSubmitted(false);
     setLoading(false);
-    // TODO: should also stop parsing 
+    setShowParsedResults(false); 
   };
 
 

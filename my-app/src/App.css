@@ -110,12 +110,13 @@ body {
 
 .title {
   font-size: 30px;
-  margin: 30px 50px;
+  margin: 5% 5%;
   align-items: center;
 }
 
 .file-chooser {
   align-items: center;
+  margin: 33% 30%;
 }
 
 .body-text {
@@ -247,5 +248,5 @@ body {
 }
 
 .parsed-text {
-  font-size: 10px;
+  font-size: 12px;
 }
