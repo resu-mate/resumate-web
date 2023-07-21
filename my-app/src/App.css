@@ -250,4 +250,6 @@ body {
 
 .parsed-text {
   font-size: 12px;
+  white-space: pre-wrap;
+  text-align: left;
 }

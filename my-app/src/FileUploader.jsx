@@ -99,8 +99,18 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
       }
 
       const data = await response.text();
-      const parsedData = JSON.parse(data);
-      setParsedResults(parsedData);
+      const plaintextData = JSON.parse(data);
+      setParsedResults(plaintextData);
+      
+      // ALL OF THIS IS FOR PLAINTEXT TO PARSED RESULTS
+      // console.log(plaintextData.extracted_text)
+
+      // const response2 = await fetch('https://no7f2zeeci.execute-api.us-east-1.amazonaws.com/default/parseText', {
+      //   method: 'POST',
+      //   body: plaintextData.extracted_text,
+      // });
+
+      // const data2 = await response2.text();
 
       setLoading(false); 
       setShowParsedResults(true);
