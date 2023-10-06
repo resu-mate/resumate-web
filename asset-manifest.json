@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/resumate-web/static/css/main.bc28d372.css",
-    "main.js": "/resumate-web/static/js/main.0f7468df.js",
+    "main.js": "/resumate-web/static/js/main.b1560dec.js",
     "static/js/787.28cb0dcd.chunk.js": "/resumate-web/static/js/787.28cb0dcd.chunk.js",
     "static/media/logo.svg": "/resumate-web/static/media/logo.579ea986c938aa994f60146b31e97a58.svg",
     "index.html": "/resumate-web/index.html",
     "main.bc28d372.css.map": "/resumate-web/static/css/main.bc28d372.css.map",
-    "main.0f7468df.js.map": "/resumate-web/static/js/main.0f7468df.js.map",
+    "main.b1560dec.js.map": "/resumate-web/static/js/main.b1560dec.js.map",
     "787.28cb0dcd.chunk.js.map": "/resumate-web/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bc28d372.css",
-    "static/js/main.0f7468df.js"
+    "static/js/main.b1560dec.js"
   ]
 }
