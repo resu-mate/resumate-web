@@ -17,7 +17,7 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <header className="app">
         <div className="top">
           <TopBar />
         </div>
@@ -28,7 +28,7 @@ function App() {
         <div className="middle-right">
           <ParsedResults showComponent={showParsedResults} parsedResults={parsedResults}/>
         </div>}
-    </div>
+    </header>
   );
 }
 

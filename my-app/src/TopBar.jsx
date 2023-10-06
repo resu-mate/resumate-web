@@ -60,9 +60,9 @@ function TopBar() {
         ) : (
           <button onClick={() => login()} className="signin">
             Sign in with Google {" "}
-            <a title="Google Inc., Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Google_%22G%22_Logo.svg">
+            {/* <a title="Google Inc., Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Google_%22G%22_Logo.svg"> */}
               <img className="logo-img" width="12" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/32px-Google_%22G%22_Logo.svg.png"/>
-            </a>
+            {/* </a> */}
           </button>
         )}
       </div>

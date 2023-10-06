@@ -142,7 +142,7 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
             Upload your resume here!
           </div>
           <div className="file-chooser">
-            <input ref={fileInputRef} type="file" accept=".pdf, .doc, .docx" onChange={onChange}/>
+            <input ref={fileInputRef} aria-label="file-input" type="file" accept=".pdf, .doc, .docx" onChange={onChange}/>
           </div>
 
             {fileBinary && fileType === 'application/pdf' && 
