@@ -4,7 +4,7 @@ import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import "./TopBar.css";
 
-function TopBar() {
+function TopBar({ setAuth }) {
   const [user, setUser] = useState([]);
   const [profile, setProfile] = useState([]);
   const login = useGoogleLogin({
@@ -14,6 +14,7 @@ function TopBar() {
   const logOut = () => {
     googleLogout();
     setProfile(null);
+    setAuth(false);
   };
   useEffect(() => {
     if (profile) {
@@ -35,6 +36,7 @@ function TopBar() {
         )
         .then((res) => {
           setProfile(res.data);
+          setAuth(true);
         })
         .catch((err) => console.log(err));
     }
