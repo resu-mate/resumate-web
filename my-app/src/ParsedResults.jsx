@@ -1,4 +1,5 @@
 import React from 'react';
+import { saveAs } from 'file-saver';
 
 export const ParsedResults = ({ showComponent, parsedResults, authenticated }) => {
     if (!parsedResults || !parsedResults.extracted_text) {
@@ -10,7 +11,8 @@ export const ParsedResults = ({ showComponent, parsedResults, authenticated }) =
     };
 
     const downloadResults = () => {
-        // TODO
+        const blob = new Blob([parsedResults.extracted_text], { type: 'text/plain' });
+        saveAs(blob, 'parsed_results.txt');
     };
 
     return (
