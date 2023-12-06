@@ -1,7 +1,12 @@
-import React from 'react';
+import { useState } from 'react';
 import { saveAs } from 'file-saver';
+import { LoadingAnimation } from './LoadingAnimation';
 
 export const ParsedResults = ({ showComponent, parsedResults, authenticated }) => {
+    const [loading, setLoading] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [score, setScore] = useState(null);
+
     if (!parsedResults || !parsedResults.extracted_text) {
         showComponent = false;
     }
@@ -16,7 +21,20 @@ export const ParsedResults = ({ showComponent, parsedResults, authenticated }) =
     };
 
     const scoreResume = () => {
-        // TODO
+        setLoading(true); 
+
+        // TODO fix implementation to call API endpoint to get score and then stop loading
+        setTimeout(() => {
+            const score = Math.floor(Math.random() * 100); // TODO: need to actually score resumes based on model
+            setScore(score);
+            setLoading(false);
+            setShowModal(true);
+        }, 2000);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+        setScore(null);
     };
 
     return (
@@ -47,6 +65,21 @@ export const ParsedResults = ({ showComponent, parsedResults, authenticated }) =
                     Score Resume
                 </button> 
             }
+
+            {loading && // TODO need to update so that loading text changes for this loader
+                <div className="body-text">
+                    <LoadingAnimation /> 
+                </div>
+            }
+
+            {showModal && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <span className="close" onClick={closeModal}>&times;</span>
+                        <p>Resume Score: {score}</p>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

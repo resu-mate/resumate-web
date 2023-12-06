@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import { LoadingAnimation } from './LoadingAnimation';
 
-
 export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
   const fileInputRef = useRef(null);
   const [dragOver, setDragOver] = useState(false);
