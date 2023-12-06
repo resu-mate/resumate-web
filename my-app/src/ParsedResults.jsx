@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { saveAs } from 'file-saver';
-import { LoadingAnimation } from './LoadingAnimation';
+import { ScoringAnimation } from './ScoringAnimation';
 
 export const ParsedResults = ({ showComponent, parsedResults, authenticated }) => {
     const [loading, setLoading] = useState(false);
@@ -66,9 +66,9 @@ export const ParsedResults = ({ showComponent, parsedResults, authenticated }) =
                 </button> 
             }
 
-            {loading && // TODO need to update so that loading text changes for this loader
+            {loading && 
                 <div className="body-text">
-                    <LoadingAnimation /> 
+                    <ScoringAnimation /> 
                 </div>
             }
 

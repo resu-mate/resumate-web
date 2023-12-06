@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { LoadingAnimation } from './LoadingAnimation';
+import { ParsingAnimation } from './ParsingAnimation';
 
 export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
   const fileInputRef = useRef(null);
@@ -176,7 +176,7 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
             </div>}
             {loading &&
             <div className="body-text">
-              <LoadingAnimation />
+              <ParsingAnimation />
             </div>}
         </div>
     </form>

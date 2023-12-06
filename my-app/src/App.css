@@ -197,19 +197,19 @@ body {
   }
 }
 
-.loading-text {
+.parsing-text {
   margin: 5px;
   font-size: 14px;
   color: #fff;
   position: relative;
 }
 
-.loading-text::after {
+.parsing-text::after {
   content: 'Parsing';
-  animation: textAnimation 1.5s infinite;
+  animation: parsingTextAnimation 1.5s infinite;
 }
 
-@keyframes textAnimation {
+@keyframes parsingTextAnimation {
   0%, 100% {
     content: 'Parsing';
   }
@@ -221,6 +221,33 @@ body {
   }
   75% {
     content: 'Parsing ...';
+  }
+}
+
+.scoring-text {
+  margin: 5px;
+  font-size: 14px;
+  color: #fff;
+  position: relative;
+}
+
+.scoring-text::after {
+  content: 'Scoring';
+  animation: scoringTextAnimation 1.5s infinite;
+}
+
+@keyframes scoringTextAnimation {
+  0%, 100% {
+    content: 'Scoring';
+  }
+  25% {
+    content: 'Scoring .';
+  }
+  50% {
+    content: 'Scoring ..';
+  }
+  75% {
+    content: 'Scoring ...';
   }
 }
 
