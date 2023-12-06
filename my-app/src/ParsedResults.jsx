@@ -15,6 +15,10 @@ export const ParsedResults = ({ showComponent, parsedResults, authenticated }) =
         saveAs(blob, 'parsed_results.txt');
     };
 
+    const scoreResume = () => {
+        // TODO
+    };
+
     return (
         <div className='bounding-box'>
             <div className="parsed-results">
@@ -36,6 +40,11 @@ export const ParsedResults = ({ showComponent, parsedResults, authenticated }) =
             {parsedResults.extracted_text &&  
                 <button className="button" onClick={downloadResults}>
                     Download Parsed Results
+                </button> 
+            }
+            {parsedResults.extracted_text &&  
+                <button className="button" onClick={scoreResume}>
+                    Score Resume
                 </button> 
             }
         </div>
