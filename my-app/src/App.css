@@ -1,313 +1,319 @@
 body {
-  height: 100%;
-  background-color: #256694;
+    height: 100%;
+    background-color: white;
 }
 
 .app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .hidden {
-  display: none;
+    display: none;
 }
 
 .top {
-  position: absolute;
-  top: 0;
-  height: 10%;
-  width: 100%;
+    position: absolute;
+    top: 0;
+    height: 10%;
+    width: 100%;
 }
 
 .top-left {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 50%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .top-right {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 50%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .middle-left {
-  position: absolute;
-  left: 0;
-  top: 10%;
-  height: 80%;
-  width: 50%;
-  display: flex;
-  align-items: center;
+    position: absolute;
+    left: 0;
+    top: 10%;
+    height: 80%;
+    width: 50%;
+    display: flex;
+    align-items: center;
 }
 
 .middle-right {
-  position: absolute;
-  right: 0;
-  top: 10%;
-  height: 80%;
-  width: 50%;
-  display: flex;
-  align-items: center;
+    position: absolute;
+    right: 0;
+    top: 10%;
+    height: 80%;
+    width: 50%;
+    display: flex;
+    align-items: center;
 }
 
 .top-bar {
-  background-color: #19495e;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
+    background-color: rgb(50, 150, 215);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .website-logo {
-  height: 100%;
-  width: 60%;
-  margin: 0 2%;
+    height: 100%;
+    width: 60%;
+    margin: 0 2%;
 }
 
 .login-button {
-  height: 30px;
-  width: 60px;
-  margin: 0 5%;
+    height: 30px;
+    width: 60px;
+    margin: 0 5%;
 }
 
 @media (max-width: 800px) {
-  .website-logo {
-    width: 100%;
-  }
+    .website-logo {
+        width: 100%;
+    }
 
-  .middle-left {
-    width: 100%;
-  }
+    .middle-left {
+        width: 100%;
+    }
 
-  .middle-right {
-    width: 100%;
-    top: 100vh;
-  }
+    .middle-right {
+        width: 100%;
+        top: 100vh;
+    }
 }
 
 .file-uploader {
-  height: 100%;
-  width: 100%;
-  align-items: center;
+    height: 100%;
+    width: 100%;
+    align-items: center;
 }
 
 .title {
-  font-size: 30px;
-  margin: 5% 5%;
-  align-items: center;
+    font-size: 30px;
+    margin: 5% 5%;
+    align-items: center;
 }
 
 .file-chooser {
-  align-items: center;
-  margin: 5% 30%;
+    align-items: center;
+    margin: 5% 30%;
 }
 
 .body-text {
-  height: 50px;
-  font-size: 15px;
-  margin: 10px;
+    height: 50px;
+    font-size: 15px;
+    margin: 10px;
 }
 
 .preview-container {
-  margin: 5%;
-  height: 70%;
+    margin: 5%;
+    height: 70%;
 }
 
 .drop-area {
-  position: relative;
-  background-color: #316285;
-  height: 80%;
-  width: 80%;
-  border: 3px dashed #ccc;
-  padding: 1rem;
-  margin: 5%;
-  transition: border-color 0.1s;
+    position: relative;
+    background-color: rgb(50, 150, 215);
+    height: 80%;
+    width: 80%;
+    border: 3px dashed rgb(15, 75, 115);
+    padding: 1rem;
+    margin: 5%;
+    transition: border-color 0.1s;
 }
 
 .drop-area.drag-over {
-  border-color: #aaa;
+    border-color: #aaa;
 }
 
 .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
 }
 
 .button {
-  margin: 10px;
-  padding: 2px 10px;
+    margin: 10px;
+    padding: 2px 10px;
 }
 
 .loading-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
 }
 
 .loading-animation {
-  width: 200px;
-  display: flex;
-  align-items: center;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: white;
 }
 
 .spinner {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 3px solid #ccc;
-  border-top-color: #333;
-  animation: spin 1s linear infinite;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 10px;
+    border: 3px solid rgb(50, 150, 215);
+    border-top-color: rgb(123, 120, 120);
+    animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .parsing-text {
-  margin: 5px;
-  font-size: 14px;
-  color: #fff;
-  position: relative;
+    margin: 5px;
+    font-size: 14px;
+    color: black;
+    position: relative;
 }
 
 .parsing-text::after {
-  content: 'Parsing';
-  animation: parsingTextAnimation 1.5s infinite;
+    content: "Parsing";
+    animation: parsingTextAnimation 1.5s infinite;
 }
 
 @keyframes parsingTextAnimation {
-  0%, 100% {
-    content: 'Parsing';
-  }
-  25% {
-    content: 'Parsing .';
-  }
-  50% {
-    content: 'Parsing ..';
-  }
-  75% {
-    content: 'Parsing ...';
-  }
+    0%,
+    100% {
+        content: "Parsing";
+    }
+    25% {
+        content: "Parsing .";
+    }
+    50% {
+        content: "Parsing ..";
+    }
+    75% {
+        content: "Parsing ...";
+    }
 }
 
 .scoring-text {
-  margin: 5px;
-  font-size: 14px;
-  color: #fff;
-  position: relative;
+    margin: 5px;
+    font-size: 14px;
+    color: black;
+    position: relative;
 }
 
 .scoring-text::after {
-  content: 'Scoring';
-  animation: scoringTextAnimation 1.5s infinite;
+    content: "Scoring";
+    animation: scoringTextAnimation 1.5s infinite;
 }
 
 @keyframes scoringTextAnimation {
-  0%, 100% {
-    content: 'Scoring';
-  }
-  25% {
-    content: 'Scoring .';
-  }
-  50% {
-    content: 'Scoring ..';
-  }
-  75% {
-    content: 'Scoring ...';
-  }
+    0%,
+    100% {
+        content: "Scoring";
+    }
+    25% {
+        content: "Scoring .";
+    }
+    50% {
+        content: "Scoring ..";
+    }
+    75% {
+        content: "Scoring ...";
+    }
 }
 
 .bounding-box {
-  height: 100%;
-  width: 100%;
-  align-items: center;
+    height: 100%;
+    width: 100%;
+    align-items: center;
 }
 
 .parsed-results {
-  position: relative;
-  background-color: #5689ad;
-  height: 80%;
-  width: 80%;
-  border: 3px solid #ccc;
-  padding: 1rem;
-  margin: 5%;
-  overflow: hidden;
+    position: relative;
+    background-color: rgb(50, 150, 215);
+    height: 80%;
+    width: 80%;
+    border: 3px solid rgb(15, 75, 115);
+    padding: 1rem;
+    margin: 5%;
+    overflow: hidden;
 }
 
 .parsed-text-container {
-  overflow-y: auto; 
-  max-height: 80%; 
-  margin: 1%;
-  display: flex;
+    overflow-y: auto;
+    max-height: 80%;
+    margin: 1%;
+    display: flex;
 }
 
 .parsed-text {
-  font-size: 12px;
-  white-space: pre-wrap;
-  text-align: left;
+    font-size: 12px;
+    white-space: pre-wrap;
+    text-align: left;
 }
 
 .modal {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 50px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  color: rgb(0, 0, 0);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    color: rgb(0, 0, 0);
 }
 
 .close {
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  font-size: 30px;
-  cursor: pointer;
-  color: rgb(0, 0, 0);
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-size: 30px;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
 }

@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { saveAs } from 'file-saver';
-import { ScoringAnimation } from './ScoringAnimation';
+import { useState } from "react";
+import { saveAs } from "file-saver";
+import { ScoringAnimation } from "./ScoringAnimation";
 
 export const ParsedResults = ({ showComponent, parsedResults, authenticated }) => {
-    const [loading, setLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [score, setScore] = useState(null);
 
     if (!parsedResults || !parsedResults.extracted_text) {
@@ -16,12 +16,14 @@ export const ParsedResults = ({ showComponent, parsedResults, authenticated }) =
     };
 
     const downloadResults = () => {
-        const blob = new Blob([parsedResults.extracted_text], { type: 'text/plain' });
-        saveAs(blob, 'parsed_results.txt');
+        const blob = new Blob([parsedResults.extracted_text], {
+            type: "text/plain",
+        });
+        saveAs(blob, "parsed_results.txt");
     };
 
     const scoreResume = () => {
-        setLoading(true); 
+        setLoading(true);
 
         // TODO fix implementation to call API endpoint to get score and then stop loading
         setTimeout(() => {
@@ -38,44 +40,43 @@ export const ParsedResults = ({ showComponent, parsedResults, authenticated }) =
     };
 
     return (
-        <div className='bounding-box'>
+        <div className="bounding-box">
             <div className="parsed-results">
-                <div className="title">
-                    Here are your parsed results!
-                </div>
-                {parsedResults.extracted_text &&
-                <div className="parsed-text-container">
-                    <div className="parsed-text">
-                        {parsedResults.extracted_text}
+                <div className="title">Here are your parsed results!</div>
+                {parsedResults.extracted_text && (
+                    <div className="parsed-text-container">
+                        <div className="parsed-text">{parsedResults.extracted_text}</div>
                     </div>
-                </div>}
+                )}
             </div>
-            {parsedResults.extracted_text && authenticated && 
+            {parsedResults.extracted_text && authenticated && (
                 <button className="button" onClick={saveResults}>
                     Save Parsed Results
-                </button> 
-            }
-            {parsedResults.extracted_text &&  
+                </button>
+            )}
+            {parsedResults.extracted_text && (
                 <button className="button" onClick={downloadResults}>
                     Download Parsed Results
-                </button> 
-            }
-            {parsedResults.extracted_text &&  
+                </button>
+            )}
+            {parsedResults.extracted_text && (
                 <button className="button" onClick={scoreResume}>
                     Score Resume
-                </button> 
-            }
+                </button>
+            )}
 
-            {loading && 
+            {loading && (
                 <div className="body-text">
-                    <ScoringAnimation /> 
+                    <ScoringAnimation />
                 </div>
-            }
+            )}
 
             {showModal && (
                 <div className="modal">
-                    <div className="modal-content">
-                        <span className="close" onClick={closeModal}>&times;</span>
+                    <div className="modal-content" >
+                        <span className="close" onClick={closeModal}>
+                            &times;
+                        </span>
                         <p>Resume Score: {score}</p>
                     </div>
                 </div>

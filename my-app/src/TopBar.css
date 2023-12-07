@@ -1,33 +1,33 @@
 .userInfo {
-    margin-right:5%;
-    display:inline-block;
+    margin-right: 5%;
+    display: inline-block;
 }
 
 .userInfoText {
-    font-size:12px;
-    text-align:left;
-    margin: 10px; 
-    float:right;
+    font-size: 12px;
+    text-align: left;
+    margin: 10px;
+    float: right;
 }
 
 .userInfoPic {
-    flex:1;
-    margin: 10px; 
+    flex: 1;
+    margin: 10px;
     float: left;
-    width:auto;
+    width: auto;
 }
 
 .pic {
-    max-width:80%;
-    height:auto;
-    margin-top:10%;
+    max-width: 80%;
+    height: auto;
+    margin-top: 10%;
 }
 
 .signin {
-    margin-right:5%;
+    margin-right: 5%;
 }
-  
+
 .logo-img {
-    margin-top: 3px; 
+    margin-top: 3px;
     margin-left: 1px;
 }
