@@ -50,14 +50,14 @@ function TopBar({ setAuth }) {
                         <div className="userInfoPic">
                             <img src={profile.picture} alt="user image" className="pic" />
                         </div>
-                        <div className="userInfoText">
-                            <p>Name: {profile.name}</p>
-                            <p>Email Address: {profile.email}</p>
-                            <button onClick={logOut}>Log out</button>
+                        <div className="userInfoTextBox">
+                            <p className="userInfoText">Name: {profile.name}</p>
+                            <p className="userInfoText">Email Address: {profile.email}</p>
+                            <button onClick={logOut} className="button-light">Log out</button>
                         </div>
                     </div>
                 ) : (
-                    <button onClick={() => login()} className="signin">
+                    <button onClick={() => login()} className="button-light">
                         Sign in with Google{" "}
                         {/* <a title="Google Inc., Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Google_%22G%22_Logo.svg"> */}
                         <img

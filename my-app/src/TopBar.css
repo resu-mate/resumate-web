@@ -1,18 +1,21 @@
 .userInfo {
     margin-right: 5%;
-    display: inline-block;
+}
+
+.userInfoTextBox {
+    font-size: 12px;
+    text-align: left;
+    padding: 0px 10px 0px 0px;
+    float: right;
 }
 
 .userInfoText {
-    font-size: 12px;
-    text-align: left;
-    margin: 10px;
-    float: right;
+    margin: 8px 0px;
 }
 
 .userInfoPic {
     flex: 1;
-    margin: 10px;
+    margin: 5px 8px 0px 0px;
     float: left;
     width: auto;
 }
@@ -20,14 +23,9 @@
 .pic {
     max-width: 80%;
     height: auto;
-    margin-top: 10%;
-}
-
-.signin {
-    margin-right: 5%;
 }
 
 .logo-img {
-    margin-top: 3px;
-    margin-left: 1px;
+    margin-top: 2px;
+    margin-left: 4px;
 }

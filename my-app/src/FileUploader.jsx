@@ -61,9 +61,17 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
         }
     };
 
+    const handleClick = (e) => {
+        fileInputRef.current.click();
+        e.preventDefault();
+    };
+
     const onSubmit = async (e) => {
         console.log({ fileBinary });
         e.preventDefault();
+
+        if (fileBinary === '') return;
+
         setSubmitted(true);
         setLoading(true);
         setParsedResults("");
@@ -140,15 +148,22 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
         >
             <div className={`drop-area${dragOver ? " drag-over" : ""}`}>
                 {dragOver && <div className="overlay"></div>}
-                <div className="title">Upload your resume here!</div>
+                <div className="title">Upload your resume here</div>
                 <div className="file-chooser">
-                    <input
-                        ref={fileInputRef}
-                        aria-label="file-input"
-                        type="file"
-                        accept=".pdf, .doc, .docx"
-                        onChange={onChange}
-                    />
+                    <div>
+                        <button className="button-light" onClick={handleClick}>
+                            Choose file
+                        </button>
+                        <input
+                            ref={fileInputRef}
+                            aria-label="file-input"
+                            type="file"
+                            accept=".pdf, .doc, .docx"
+                            onChange={onChange}
+                            style={{ display: "none" }}
+                        />
+                    </div>
+                    <div className="file-input-text">{fileName === "" ? "No file selected" : fileName}</div>
                 </div>
 
                 {fileBinary && fileType === "application/pdf" && (
@@ -169,10 +184,10 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
             </div>)} */}
             </div>
             <div>
-                <button className="button" onClick={handleReset}>
+                <button className="button-dark" onClick={handleReset}>
                     Reset
                 </button>
-                <button className="button" type="submit">
+                <button className="button-dark" type="submit">
                     Submit
                 </button>
             </div>

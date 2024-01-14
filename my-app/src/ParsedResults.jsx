@@ -42,7 +42,7 @@ export const ParsedResults = ({ showComponent, parsedResults, authenticated }) =
     return (
         <div className="bounding-box">
             <div className="parsed-results">
-                <div className="title">Here are your parsed results!</div>
+                <div className="title">Here are your parsed results</div>
                 {parsedResults.extracted_text && (
                     <div className="parsed-text-container">
                         <div className="parsed-text">{parsedResults.extracted_text}</div>
@@ -50,17 +50,17 @@ export const ParsedResults = ({ showComponent, parsedResults, authenticated }) =
                 )}
             </div>
             {parsedResults.extracted_text && authenticated && (
-                <button className="button" onClick={saveResults}>
+                <button className="button-dark" onClick={saveResults}>
                     Save Parsed Results
                 </button>
             )}
             {parsedResults.extracted_text && (
-                <button className="button" onClick={downloadResults}>
+                <button className="button-dark" onClick={downloadResults}>
                     Download Parsed Results
                 </button>
             )}
             {parsedResults.extracted_text && (
-                <button className="button" onClick={scoreResume}>
+                <button className="button-dark" onClick={scoreResume}>
                     Score Resume
                 </button>
             )}
