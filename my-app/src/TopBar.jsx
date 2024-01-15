@@ -3,8 +3,9 @@ import logo from "./logo.svg";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import "./TopBar.css";
+import DarkModeToggle from "./DarkModeToggle";
 
-function TopBar({ setAuth }) {
+function TopBar({ setAuth, setMode }) {
     const [user, setUser] = useState([]);
     const [profile, setProfile] = useState([]);
     const login = useGoogleLogin({
@@ -69,6 +70,7 @@ function TopBar({ setAuth }) {
                         {/* </a> */}
                     </button>
                 )}
+                <DarkModeToggle setMode={setMode} />
             </div>
         </div>
     );

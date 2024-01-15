@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import TopBar from "./TopBar";
 import { FileUploader } from "./FileUploader";
 import { ParsedResults } from "./ParsedResults";
 
 function App() {
+    const [mode, setMode] = useState("light-mode");
     const [showParsedResults, setShowParsedResults] = useState(false);
     const [parsedResults, setParsedResults] = useState("");
     const [authenticated, setAuthenticated] = useState(false);
+
+    useEffect(() => {
+        const mode = localStorage.getItem('ld-mode');
+        if (mode) {
+            setMode(mode);
+        } else {
+            localStorage.setItem('ld-mode', 'light-mode');
+            setMode('light-mode');
+        }
+    }, [setMode])
 
     const setShow = (value: boolean) => {
         setShowParsedResults(value);
@@ -22,9 +33,9 @@ function App() {
     };
 
     return (
-        <header className="app">
+        <header className={`app ${mode}`}>
             <div className="top">
-                <TopBar setAuth={setAuth} />
+                <TopBar setAuth={setAuth} setMode={setMode} />
             </div>
             <div className="middle-left">
                 <FileUploader setShowParsedResults={setShow} setParsedResults={setResults} />

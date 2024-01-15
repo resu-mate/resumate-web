@@ -1,6 +1,6 @@
 body {
     height: 100%;
-    background-color: white;
+    background-color: var(--primary-colour);
 }
 
 .app {
@@ -11,7 +11,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
+    background-color: var(--primary-colour);
 }
 
 .hidden {
@@ -68,7 +68,7 @@ body {
 }
 
 .top-bar {
-    background-color: rgb(50, 150, 215);
+    background-color: var(--secondary-colour);
     height: 100%;
     width: 100%;
     display: flex;
@@ -117,12 +117,14 @@ body {
 .file-input-text {
     font-size: 12px;
     margin-top: 4px;
+    color: var(--primary-text);
 }
 
 .body-text {
     height: 50px;
     font-size: 15px;
     margin: 10px;
+    color: var(--primary-text);
 }
 
 .preview-container {
@@ -132,17 +134,18 @@ body {
 
 .drop-area {
     position: relative;
-    background-color: rgb(50, 150, 215);
+    background-color: var(--secondary-colour);
     height: 80%;
     width: 80%;
-    border: 3px dashed rgb(235, 235, 235);
+    border: 3px dashed var(--primary-colour);
     padding: 1rem;
     margin: 5%;
     transition: border-color 0.1s;
+    color: var(--primary-text);
 }
 
 .drop-area.drag-over {
-    border-color: #aaa;
+    border-color: var(--accent);
 }
 
 .overlay {
@@ -161,31 +164,31 @@ body {
 .button-light {
     margin: 0px 12px 0px 0px;
     padding: 4px 12px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(50, 150, 215);
+    background-color: var(--primary-colour);
+    border: 1px solid var(--secondary-colour);
     border-radius: 10px;
-    color: black;
+    color: var(--secondary-colour);
 }
 
 .button-light:hover {
-    background-color: rgb(50, 150, 215);
-    border: 1px solid rgb(255, 255, 255);
-    color: white;
+    background-color: var(--secondary-colour);
+    border: 1px solid var(--primary-colour);
+    color: var(--primary-colour);
 }
 
 .button-dark {
     margin: 0px 12px;
     padding: 4px 12px;
-    background-color: rgb(50, 150, 215);
-    border: 1px solid rgb(255, 255, 255);
+    background-color: var(--secondary-colour);
+    border: 1px solid var(--primary-colour);
     border-radius: 10px;
-    color: white;
+    color: var(--primary-colour);
 }
 
 .button-dark:hover {
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(50, 150, 215);
-    color: black;
+    background-color: var(--primary-colour);
+    border: 1px solid var(--secondary-colour);
+    color: var(--secondary-colour);
 }
 
 .loading-background {
@@ -207,7 +210,7 @@ body {
     align-items: center;
     padding: 50px;
     border-radius: 10px;
-    background-color: white;
+    background-color: var(--primary-colour);
 }
 
 .spinner {
@@ -215,8 +218,8 @@ body {
     height: 40px;
     border-radius: 50%;
     margin: 10px;
-    border: 3px solid rgb(50, 150, 215);
-    border-top-color: rgb(123, 120, 120);
+    border: 3px solid var(--secondary-colour);
+    border-top-color: var(--accent);
     animation: spin 1s linear infinite;
 }
 
@@ -229,7 +232,7 @@ body {
 .parsing-text {
     margin: 5px;
     font-size: 14px;
-    color: black;
+    color: var(--secondary-text);;
     position: relative;
 }
 
@@ -257,7 +260,7 @@ body {
 .scoring-text {
     margin: 5px;
     font-size: 14px;
-    color: black;
+    color: var(--secondary-text);;
     position: relative;
 }
 
@@ -290,13 +293,14 @@ body {
 
 .parsed-results {
     position: relative;
-    background-color: rgb(50, 150, 215);
+    background-color: var(--secondary-colour);
     height: 80%;
     width: 80%;
-    border: 3px solid rgb(50, 150, 215);
+    border: 3px solid var(--secondary-colour);
     padding: 1rem;
     margin: 5%;
     overflow: hidden;
+    color: var(--primary-text);
 }
 
 .parsed-text-container {
@@ -327,11 +331,11 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: var(--primary-colour);
     padding: 50px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    color: rgb(0, 0, 0);
+    color: var(--secondary-text);
 }
 
 .close {
@@ -340,5 +344,5 @@ body {
     right: 5%;
     font-size: 30px;
     cursor: pointer;
-    color: rgb(0, 0, 0);
+    color: var(--secondary-text);
 }
