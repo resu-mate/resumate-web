@@ -8,7 +8,6 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
     const [fileData, setFileData] = useState("");
     const [fileName, setFileName] = useState("");
     const [fileType, setFileType] = useState("");
-    const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const onDragOver = (e) => {
@@ -30,7 +29,6 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
     };
 
     const handleFile = (fileRef) => {
-        setSubmitted(false);
         const fileName = fileRef.name;
         setFileName(fileName);
         const fileType = fileRef.type;
@@ -50,7 +48,6 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
     };
 
     const onChange = (e) => {
-        setSubmitted(false);
         setParsedResults("");
         if (e.target.files.length > 0) {
             const fileRef = e.target.files[0];
@@ -72,7 +69,6 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
 
         if (fileBinary === '') return;
 
-        setSubmitted(true);
         setLoading(true);
         setParsedResults("");
 
@@ -132,10 +128,15 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
         fileInputRef.current.value = "";
         setFileBinary("");
         setFileName("");
-        setSubmitted(false);
         setLoading(false);
         setShowParsedResults(false);
         setParsedResults("");
+    };
+
+    const handleMatch = (e) => {
+        // TODO: need to actually match + score resume rather than just parse
+        console.log("match button clicked!");
+        onSubmit(e);
     };
 
     return (
@@ -184,15 +185,17 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
             </div>)} */}
             </div>
             <div>
-                <button className="button-dark" onClick={handleReset}>
+                <button className="button-dark" onClick={handleReset} disabled={!fileBinary} title={fileBinary ? '' : 'No file uploaded'}>
                     Reset
                 </button>
-                <button className="button-dark" type="submit">
-                    Submit
+                <button className="button-dark" type="submit" disabled={!fileBinary} title={fileBinary ? '' : 'No file uploaded'}>
+                    Parse
+                </button>
+                <button className="button-dark" onClick={handleMatch} disabled={!fileBinary} title={fileBinary ? '' : 'No file uploaded'}>
+                    Match
                 </button>
             </div>
             <div>
-                {submitted && fileBinary && <div className="body-text">You submitted {fileName}!</div>}
                 {loading && (
                     <div className="body-text">
                         <ParsingAnimation />

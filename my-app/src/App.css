@@ -170,10 +170,14 @@ body {
     color: var(--secondary-colour);
 }
 
-.button-light:hover {
+.button-light:hover:not(:disabled) {
     background-color: var(--secondary-colour);
     border: 1px solid var(--primary-colour);
     color: var(--primary-colour);
+}
+
+.button-light:disabled {
+    cursor: not-allowed;
 }
 
 .button-dark {
@@ -185,10 +189,14 @@ body {
     color: var(--primary-colour);
 }
 
-.button-dark:hover {
+.button-dark:hover:not(:disabled) {
     background-color: var(--primary-colour);
     border: 1px solid var(--secondary-colour);
     color: var(--secondary-colour);
+}
+
+.button-dark:disabled {
+    cursor: not-allowed;
 }
 
 .loading-background {
