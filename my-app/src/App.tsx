@@ -37,7 +37,7 @@ function App() {
             <div className="top">
                 <TopBar setAuth={setAuth} setMode={setMode} />
             </div>
-            <div className="middle-left">
+            <div className={`${showParsedResults ? "middle-left" : "middle"}`}>
                 <FileUploader setShowParsedResults={setShow} setParsedResults={setResults} />
             </div>
             {showParsedResults && (

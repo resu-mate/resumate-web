@@ -164,15 +164,17 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
                             style={{ display: "none" }}
                         />
                     </div>
-                    <div className="file-input-text">{fileName === "" ? "No file selected" : fileName}</div>
+                    <div className="file-input-text">{fileName === "" ? "No file uploaded" : fileName}</div>
                 </div>
 
-                {fileBinary && fileType === "application/pdf" && (
-                    <div className="preview-container">
-                        <embed src={`${fileData}#toolbar=0&navpanes=0`} height="100%" type="application/pdf" />
-                        {/* <iframe src={`${fileData}#toolbar=0`} height="100%" width="100%" title="Embedded PDF" /> */}
-                    </div>
-                )}
+                {
+                // fileBinary && fileType === "application/pdf" && (
+                //     <div className="preview-container">
+                //         <embed src={`${fileData}#toolbar=0&navpanes=0`} height="100%" type="application/pdf" />
+                //         {/* <iframe src={`${fileData}#toolbar=0`} height="100%" width="100%" title="Embedded PDF" /> */}
+                //     </div>
+                // )
+                }
 
                 {/* { fileBinary && file.indexOf('application/msword') > -1 && (
             <div className="preview-container">
