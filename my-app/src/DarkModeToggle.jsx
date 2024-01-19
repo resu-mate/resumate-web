@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './DarkModeToggle.css';
 
 function DarkModeToggle({ setMode }) {
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(true);
 
     const handleClick = () => {
         if (localStorage.getItem('ld-mode') === 'light-mode') {
