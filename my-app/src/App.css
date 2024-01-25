@@ -103,6 +103,18 @@ body {
     }
 }
 
+@media (max-height: 820px) {
+    .middle-right {
+        top: 99vh;
+    }
+}
+
+@media (max-height: 800px) {
+    .middle-right {
+        height: 100vh;
+    }
+}
+
 .file-uploader {
     height: 600px;
     width: 100%;
