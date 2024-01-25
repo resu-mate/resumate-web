@@ -51,6 +51,7 @@ body {
     position: absolute;
     height: 600px;
     width: 100%;
+    background-color: var(--primary-colour);
 }
 
 .middle-left {
@@ -112,6 +113,43 @@ body {
 @media (max-height: 800px) {
     .middle-right {
         height: 100vh;
+    }
+}
+
+@media (max-height: 720px) {
+    .middle {
+        top: 10vh;
+        height: 95vh;
+    }
+}
+
+@media (max-height: 690px) {
+    .middle {
+        height: 100vh;
+    }
+}
+
+@media (max-height: 650px) {
+    .middle {
+        height: 105vh;
+    }
+}
+
+@media (max-height: 620px) {
+    .middle {
+        height: 110vh;
+    }
+}
+
+@media (max-height: 590px) {
+    .middle {
+        height: 115vh;
+    }
+}
+
+@media (max-height: 570px) {
+    .middle {
+        height: 120vh;
     }
 }
 
