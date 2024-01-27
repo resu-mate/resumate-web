@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { ParsingAnimation } from "./ParsingAnimation";
+const officeParser = require("officeparser");
 
 export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
     const fileInputRef = useRef(null);
@@ -67,7 +68,7 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
         console.log({ fileBinary });
         e.preventDefault();
 
-        if (fileBinary === '') return;
+        if (fileBinary === "") return;
 
         setLoading(true);
         setParsedResults("");
@@ -168,12 +169,12 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
                 </div>
 
                 {
-                // fileBinary && fileType === "application/pdf" && (
-                //     <div className="preview-container">
-                //         <embed src={`${fileData}#toolbar=0&navpanes=0`} height="100%" type="application/pdf" />
-                //         {/* <iframe src={`${fileData}#toolbar=0`} height="100%" width="100%" title="Embedded PDF" /> */}
-                //     </div>
-                // )
+                    // fileBinary && fileType === "application/pdf" && (
+                    //     <div className="preview-container">
+                    //         <embed src={`${fileData}#toolbar=0&navpanes=0`} height="100%" type="application/pdf" />
+                    //         {/* <iframe src={`${fileData}#toolbar=0`} height="100%" width="100%" title="Embedded PDF" /> */}
+                    //     </div>
+                    // )
                 }
 
                 {/* { fileBinary && file.indexOf('application/msword') > -1 && (
@@ -187,13 +188,28 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
             </div>)} */}
             </div>
             <div>
-                <button className="button-dark" onClick={handleReset} disabled={!fileBinary} title={fileBinary ? '' : 'No file uploaded'}>
+                <button
+                    className="button-dark"
+                    onClick={handleReset}
+                    disabled={!fileBinary}
+                    title={fileBinary ? "" : "No file uploaded"}
+                >
                     Reset
                 </button>
-                <button className="button-dark" type="submit" disabled={!fileBinary} title={fileBinary ? '' : 'No file uploaded'}>
+                <button
+                    className="button-dark"
+                    type="submit"
+                    disabled={!fileBinary}
+                    title={fileBinary ? "" : "No file uploaded"}
+                >
                     Parse
                 </button>
-                <button className="button-dark" onClick={handleMatch} disabled={!fileBinary} title={fileBinary ? '' : 'No file uploaded'}>
+                <button
+                    className="button-dark"
+                    onClick={handleMatch}
+                    disabled={!fileBinary}
+                    title={fileBinary ? "" : "No file uploaded"}
+                >
                     Match
                 </button>
             </div>
