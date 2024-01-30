@@ -29,7 +29,7 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
                     return page.getTextContent().then((content) => {
                         // remove headers and page number
                         const resultStr = content.items.map(i => i.str);
-                        return resultStr.join(" ").replace(/ {2,}/g, ' ');
+                        return resultStr.join(" ").replace(/ {2,}/g, ' ').replace(/ ,/g, ',').replace(/(\d) (\d)/g, '$1$2');
                     });
                 }));
             })
