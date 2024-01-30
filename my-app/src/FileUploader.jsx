@@ -1,14 +1,41 @@
 import { useState, useRef } from "react";
 import { ParsingAnimation } from "./ParsingAnimation";
+const pdfjs = require("pdfjs-dist/legacy/build/pdf");
+const _ = require('lodash');
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
     const fileInputRef = useRef(null);
     const [dragOver, setDragOver] = useState(false);
     const [fileBinary, setFileBinary] = useState("");
-    const [fileData, setFileData] = useState("");
+    const [fileData, setFileData] = useState([]);
     const [fileName, setFileName] = useState("");
     const [fileType, setFileType] = useState("");
     const [loading, setLoading] = useState(false);
+
+
+
+    async function getItems(fileData) {
+        const fileArray = new Uint8Array(fileData);
+        return pdfjs.getDocument(new Uint8Array(fileArray)).promise
+            .then((pdfDocument) => {
+            // get all the pages from pdf
+            const numPages = pdfDocument.numPages;
+            return Promise.all(_.range(1, numPages + 1).map((pageNum) => {
+                return pdfDocument.getPage(pageNum);
+            }));
+            })
+            .then((pages) => {
+            // get text content items from all pages
+            return Promise.all(pages.map((page) => {
+                return page.getTextContent().then((content) => {
+                // remove headers and page number
+                const resultStr = content.items.map(i=>i.str);
+                return resultStr.join("");
+                });
+            }));
+            })
+    }
 
     const onDragOver = (e) => {
         e.preventDefault();
@@ -41,7 +68,7 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
         };
 
         const reader2 = new FileReader();
-        reader2.readAsDataURL(fileRef);
+        reader2.readAsArrayBuffer(fileRef);
         reader2.onload = (ev) => {
             setFileData(ev.target.result);
         };
@@ -66,6 +93,9 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
     const onSubmit = async (e) => {
         console.log({ fileBinary });
         e.preventDefault();
+        
+        const parsedText = await getItems(fileData);
+        console.log(parsedText);
 
         if (fileBinary === '') return;
 
