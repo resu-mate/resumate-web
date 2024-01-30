@@ -17,21 +17,21 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
         const fileArray = new Uint8Array(fileData);
         return pdfjs.getDocument(new Uint8Array(fileArray)).promise
             .then((pdfDocument) => {
-            // get all the pages from pdf
-            const numPages = pdfDocument.numPages;
-            return Promise.all(_.range(1, numPages + 1).map((pageNum) => {
-                return pdfDocument.getPage(pageNum);
-            }));
+                // get all the pages from pdf
+                const numPages = pdfDocument.numPages;
+                return Promise.all(_.range(1, numPages + 1).map((pageNum) => {
+                    return pdfDocument.getPage(pageNum);
+                }));
             })
             .then((pages) => {
-            // get text content items from all pages
-            return Promise.all(pages.map((page) => {
-                return page.getTextContent().then((content) => {
-                // remove headers and page number
-                const resultStr = content.items.map(i=>i.str);
-                return resultStr.join("");
-                });
-            }));
+                // get text content items from all pages
+                return Promise.all(pages.map((page) => {
+                    return page.getTextContent().then((content) => {
+                        // remove headers and page number
+                        const resultStr = content.items.map(i => i.str);
+                        return resultStr.join(" ").replace(/ {2,}/g, ' ');
+                    });
+                }));
             })
     }
 
