@@ -1,7 +1,7 @@
 import { saveAs } from "file-saver";
 
 export const ParsedResults = ({ showComponent, parsedResults, authenticated }) => {
-    if (!parsedResults || !parsedResults.extracted_text) {
+    if (!parsedResults) {
         showComponent = false;
     }
 
@@ -10,7 +10,7 @@ export const ParsedResults = ({ showComponent, parsedResults, authenticated }) =
     };
 
     const downloadResults = () => {
-        const blob = new Blob([parsedResults.extracted_text], {
+        const blob = new Blob([parsedResults], {
             type: "text/plain",
         });
         saveAs(blob, "parsed_results.txt");
@@ -20,18 +20,18 @@ export const ParsedResults = ({ showComponent, parsedResults, authenticated }) =
         <div className="bounding-box">
             <div className="parsed-results">
                 <div className="title">Here are your parsed results</div>
-                {parsedResults.extracted_text && (
+                {parsedResults && (
                     <div className="parsed-text-container">
-                        <div className="parsed-text">{parsedResults.extracted_text}</div>
+                        <div className="parsed-text">{parsedResults}</div>
                     </div>
                 )}
             </div>
-            {parsedResults.extracted_text && authenticated && (
+            {parsedResults && authenticated && (
                 <button className="button-dark" onClick={saveResults}>
                     Save Parsed Results
                 </button>
             )}
-            {parsedResults.extracted_text && (
+            {parsedResults && (
                 <button className="button-dark" onClick={downloadResults}>
                     Download Parsed Results
                 </button>

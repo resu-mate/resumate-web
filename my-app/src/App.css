@@ -557,7 +557,7 @@ body {
 
 .parsed-text-container {
     overflow-y: auto;
-    max-height: 600px;
+    max-height: 400px;
     margin: 1%;
     display: flex;
 }

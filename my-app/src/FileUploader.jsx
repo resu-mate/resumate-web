@@ -13,8 +13,6 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
     const [fileType, setFileType] = useState("");
     const [loading, setLoading] = useState(false);
 
-
-
     async function getItems(fileData) {
         const fileArray = new Uint8Array(fileData);
         return pdfjs.getDocument(new Uint8Array(fileArray)).promise
@@ -91,16 +89,18 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
     };
 
     const onSubmit = async (e) => {
-        console.log({ fileBinary });
+        setLoading(true);
+        setParsedResults("");
+
         e.preventDefault();
         
         const parsedText = await getItems(fileData);
-        console.log(parsedText);
+        setParsedResults(parsedText);
+
+        setLoading(false);
+        setShowParsedResults(true);
 
         if (fileBinary === '') return;
-
-        setLoading(true);
-        setParsedResults("");
 
         try {
             if (!fileBinary) {
@@ -117,23 +117,24 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
                 return;
             }
 
-            const response = await fetch("https://3trpak7uyg.execute-api.us-east-1.amazonaws.com/dev/upload-file", {
-                method: "POST",
-                body: fileBinary,
-                headers: {
-                    "Content-Type": "application/pdf",
-                },
-            });
+            // commenting out plaintext api call
+            // const response = await fetch("https://3trpak7uyg.execute-api.us-east-1.amazonaws.com/dev/upload-file", {
+            //     method: "POST",
+            //     body: fileBinary,
+            //     headers: {
+            //         "Content-Type": "application/pdf",
+            //     },
+            // });
 
-            if (!response.ok) {
-                setLoading(false);
-                setShowParsedResults(true);
-                throw new Error("error");
-            }
+            // if (!response.ok) {
+            //     setLoading(false);
+            //     setShowParsedResults(true);
+            //     throw new Error("error");
+            // }
 
-            const data = await response.text();
-            const plaintextData = JSON.parse(data);
-            setParsedResults(plaintextData);
+            // const data = await response.text();
+            // const plaintextData = JSON.parse(data);
+            // setParsedResults(plaintextData);
 
             // ALL OF THIS IS FOR PLAINTEXT TO PARSED RESULTS
             // console.log(plaintextData.extracted_text)
