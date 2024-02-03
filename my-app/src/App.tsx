@@ -3,10 +3,12 @@ import "./App.css";
 import TopBar from "./TopBar";
 import { FileUploader } from "./FileUploader";
 import { ParsedResults } from "./ParsedResults";
+import { JobDescriptionInput } from "./JobDescriptionInput";
 
 function App() {
     const [mode, setMode] = useState("light-mode");
     const [showParsedResults, setShowParsedResults] = useState(false);
+    const [showJobDescriptionInput, setShowJobDescriptionInput] = useState(false);
     const [parsedResults, setParsedResults] = useState("");
     const [authenticated, setAuthenticated] = useState(false);
 
@@ -20,7 +22,11 @@ function App() {
         }
     }, [setMode])
 
-    const setShow = (value: boolean) => {
+    const setShowJobDescription = (value: boolean) => {
+        setShowJobDescriptionInput(value);
+    };
+
+    const setShowResults = (value: boolean) => {
         setShowParsedResults(value);
     };
 
@@ -37,8 +43,8 @@ function App() {
             <div className="top">
                 <TopBar setAuth={setAuth} setMode={setMode} />
             </div>
-            <div className={`${showParsedResults ? "middle-left" : "middle"}`}>
-                <FileUploader setShowParsedResults={setShow} setParsedResults={setResults} />
+            <div className={`${showParsedResults || showJobDescriptionInput ? "middle-left" : "middle"}`}>
+                <FileUploader setShowParsedResults={setShowResults} setParsedResults={setResults} setShowJobDescriptionInput={setShowJobDescription} />
             </div>
             {showParsedResults && (
                 <div className="middle-right">
@@ -47,6 +53,11 @@ function App() {
                         parsedResults={parsedResults}
                         authenticated={authenticated}
                     />
+                </div>
+            )}
+            {showJobDescriptionInput && (
+                <div className="middle-right">
+                    <JobDescriptionInput/>
                 </div>
             )}
         </header>

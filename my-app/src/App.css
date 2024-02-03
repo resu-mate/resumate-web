@@ -568,6 +568,26 @@ body {
     text-align: left;
 }
 
+.job-description-input {
+    position: relative;
+    background-color: var(--secondary-colour);
+    height: 80%;
+    border: 3px solid var(--secondary-colour);
+    padding: 1rem;
+    margin: 50px;
+    overflow: hidden;
+    color: var(--primary-text);
+}
+
+.textarea {
+    width: 100%;
+    height: 83%;
+    background: transparent;
+    border: 0.5px solid var(--primary-colour);
+    border-radius: 10px;
+    resize: none;
+}
+
 .modal {
     display: block;
     position: fixed;

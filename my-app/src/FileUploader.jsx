@@ -4,7 +4,7 @@ const pdfjs = require("pdfjs-dist/legacy/build/pdf");
 const _ = require('lodash');
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
+export const FileUploader = ({ setShowParsedResults, setParsedResults, setShowJobDescriptionInput }) => {
     const fileInputRef = useRef(null);
     const [dragOver, setDragOver] = useState(false);
     const [fileBinary, setFileBinary] = useState("");
@@ -73,7 +73,7 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
     };
 
     const onChange = (e) => {
-        setParsedResults("");
+        setParsedResults(null);
         if (e.target.files.length > 0) {
             const fileRef = e.target.files[0];
             handleFile(fileRef);
@@ -90,7 +90,8 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
 
     const onSubmit = async (e) => {
         setLoading(true);
-        setParsedResults("");
+        setShowJobDescriptionInput(false);
+        setParsedResults(null);
 
         e.preventDefault();
         
@@ -106,14 +107,14 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
             if (!fileBinary) {
                 console.error("no file submitted");
                 setLoading(false);
-                setShowParsedResults(true);
+                setShowParsedResults(false);
                 return;
             }
 
             if (fileType !== "application/pdf") {
                 console.error("not a pdf");
                 setLoading(false);
-                setShowParsedResults(true);
+                setShowParsedResults(false);
                 return;
             }
 
@@ -161,13 +162,14 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
         setFileName("");
         setLoading(false);
         setShowParsedResults(false);
-        setParsedResults("");
+        setParsedResults(null);
+        setShowJobDescriptionInput(false);
     };
 
     const handleMatch = (e) => {
-        // TODO: need to actually match + score resume rather than just parse
-        console.log("match button clicked!");
-        onSubmit(e);
+        e.preventDefault();
+        setShowJobDescriptionInput(true);
+        setShowParsedResults(false);
     };
 
     return (
@@ -221,7 +223,7 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults }) => {
                 <button className="button-dark" onClick={handleReset} disabled={!fileBinary} title={fileBinary ? '' : 'No file uploaded'}>
                     Reset
                 </button>
-                <button className="button-dark" type="submit" disabled={!fileBinary} title={fileBinary ? '' : 'No file uploaded'}>
+                <button className="button-dark" onClick={onSubmit} disabled={!fileBinary} title={fileBinary ? '' : 'No file uploaded'}>
                     Parse
                 </button>
                 <button className="button-dark" onClick={handleMatch} disabled={!fileBinary} title={fileBinary ? '' : 'No file uploaded'}>
