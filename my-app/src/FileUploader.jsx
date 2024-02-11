@@ -1,7 +1,9 @@
 import { useState, useRef } from "react";
 import { ParsingAnimation } from "./ParsingAnimation";
+import * as mammoth from 'mammoth/mammoth.browser';
 const pdfjs = require("pdfjs-dist/legacy/build/pdf");
 const _ = require('lodash');
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 export const FileUploader = ({ setShowParsedResults, setParsedResults, setShowJobDescriptionInput }) => {
@@ -94,12 +96,6 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults, setShowJo
         setParsedResults(null);
 
         e.preventDefault();
-        
-        const parsedText = await getItems(fileData);
-        setParsedResults(parsedText);
-
-        setLoading(false);
-        setShowParsedResults(true);
 
         if (fileBinary === '') return;
 
@@ -111,7 +107,19 @@ export const FileUploader = ({ setShowParsedResults, setParsedResults, setShowJo
                 return;
             }
 
-            if (fileType !== "application/pdf") {
+            if (fileType == "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
+                mammoth.extractRawText({arrayBuffer: fileData})
+                    .then(function(result){
+                        setParsedResults(result.value.replace(/(\r\n|\n|\r)/gm, "")); 
+                });
+                setLoading(false);
+                setShowParsedResults(true);
+            } else if (fileType == "application/pdf") {
+                const parsedText = await getItems(fileData);
+                setParsedResults(parsedText);
+                setLoading(false);
+                setShowParsedResults(true);
+            } else {
                 console.error("not a pdf");
                 setLoading(false);
                 setShowParsedResults(false);
